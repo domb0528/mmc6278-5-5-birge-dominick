@@ -3,6 +3,26 @@ const db = require('./db')
 
 router
   .route('/inventory')
+  app.get('/api/inventory', (req, res, next) => {
+    const stuff = [
+      {
+        "id": 1,
+        "title": 'Stratocaster',
+        "description": 'One of the most iconic electric guitars ever made.',
+        "image": 'strat.jpg',
+        "price": 599.99,
+        "quantity": 3,
+      },
+    ];
+    res.status(200).json(inventory);
+  });
+
+  app.post('/api/inventory', (req, res, next) => {
+    console.log(req.body);
+    res.status(201).json({
+      message: 'Thing created successfully!'
+    });
+  });
   // TODO: Create a GET route that returns a list of everything in the inventory table
   // The response should look like:
   // [
@@ -38,6 +58,25 @@ router
   //   "quantity": 3
   // }
 
+     app.get('/api/inventory/id', (req, res, next) => {
+    const stuff = [
+      {
+        "id": 1,
+        "title": 'Stratocaster',
+        "description": 'One of the most iconic electric guitars ever made.',
+        "image": 'strat.jpg',
+        "price": 599.99,
+        "quantity": 3,
+      },
+    ];
+    res.status(200).json(inventory);
+  });
+
+   app.put((req, res) => {
+    res.send('price, quantity, name, description, image')
+  })
+
+
   // TODO: Create a PUT route that updates the inventory table based on the id
   // in the route parameter.
   // This route should accept price, quantity, name, description, and image
@@ -49,6 +88,10 @@ router
   // based on the id in the route parameter.
   // If no item is found, return a 404 status.
   // If an item is deleted, return a 204 status code.
+
+  app.delete('/inventory', (req, res) => {
+  res.send('idk')
+})
 
 router
   .route('/cart')
